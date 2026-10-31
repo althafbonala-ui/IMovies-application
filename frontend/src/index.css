@@ -1,0 +1,1544 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================================
+   iMovies Cinematic Design System Tokens
+   Inspired by premium Indian cinema platforms and Dribbble art direction
+   ========================================================================== */
+:root {
+  /* Cinematic Obsidian & Deep Navy Canvas */
+  --bg-base: #060913;
+  --bg-surface: #0a0f1e;
+  --bg-surface-elevated: #11182c;
+  --bg-card: rgba(14, 21, 38, 0.72);
+  --bg-card-hover: rgba(22, 33, 58, 0.88);
+  --bg-input: #10172b;
+
+  /* Primary Cinema Accents - Restrained Crimson & Blood-Orange */
+  --primary: #f84464;
+  --primary-hover: #ff2a55;
+  --primary-red: #e50914;
+  --primary-gradient: linear-gradient(135deg, #f84464 0%, #d81f44 50%, #b21032 100%);
+  --primary-glow: rgba(248, 68, 100, 0.45);
+  --primary-glow-subtle: rgba(248, 68, 100, 0.18);
+
+  /* Secondary Accents */
+  --accent-gold: #ffb800;
+  --accent-cyan: #38bdf8;
+  --accent-emerald: #10b981;
+  --accent-purple: #8b5cf6;
+
+  /* Text Hierarchy */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --text-highlight: #ffffff;
+
+  /* Borders & Glassmorphic Luminescence */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-highlight: rgba(248, 68, 100, 0.45);
+  --glass-bg: rgba(9, 13, 25, 0.76);
+  --glass-blur: blur(22px);
+
+  /* Typography */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.75);
+  --shadow-glow: 0 0 30px rgba(248, 68, 100, 0.35);
+}
+
+/* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-base);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-base);
+  color: var(--text-main);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(ellipse 90% 60% at 50% -10%, rgba(229, 9, 20, 0.14), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 90% 30%, rgba(56, 189, 248, 0.05), transparent 50%),
+    radial-gradient(ellipse 50% 50% at 10% 70%, rgba(248, 68, 100, 0.05), transparent 50%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6, .brand-font {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #050812;
+}
+::-webkit-scrollbar-thumb {
+  background: #1b2640;
+  border-radius: 9999px;
+  border: 2px solid #050812;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3a60;
+}
+
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid var(--primary) !important;
+  outline-offset: 3px !important;
+}
+
+/* ==========================================================================
+   Buttons & Interactive Elements
+   ========================================================================== */
+.btn-bms-primary {
+  background: var(--primary-gradient);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-weight: 600;
+  font-family: var(--font-heading);
+  border-radius: var(--radius-pill);
+  padding: 0.65rem 1.45rem;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 6px 20px var(--primary-glow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+
+.btn-bms-primary:hover, .btn-bms-primary:focus {
+  background: linear-gradient(135deg, #ff4d6f 0%, #e62247 50%, #c41235 100%);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 10px 28px rgba(248, 68, 100, 0.55);
+  color: #ffffff !important;
+}
+
+.btn-bms-primary:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.btn-bms-outline {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9 !important;
+  border: 1px solid var(--border-glass);
+  backdrop-filter: blur(10px);
+  font-weight: 600;
+  font-family: var(--font-heading);
+  border-radius: var(--radius-pill);
+  padding: 0.62rem 1.35rem;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-bms-outline:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   Navigation Bar (Translucent Glassmorphism)
+   ========================================================================== */
+.imovies-navbar {
+  background: rgba(6, 9, 19, 0.88);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: 1040;
+  transition: all 0.3s ease;
+}
+
+.brand-logo-glow {
+  text-shadow: 0 0 20px rgba(248, 68, 100, 0.5);
+  transition: transform 0.25s ease;
+}
+.brand-logo-glow:hover {
+  transform: scale(1.03);
+}
+
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.search-input {
+  background: rgba(16, 23, 43, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  border-radius: var(--radius-pill);
+  padding: 0.58rem 1rem 0.58rem 2.6rem;
+  font-size: 0.88rem;
+  width: 100%;
+  transition: all 0.25s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  background: #141d36;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(248, 68, 100, 0.22), 0 0 16px rgba(248, 68, 100, 0.25);
+  color: #ffffff;
+}
+
+.search-input::placeholder {
+  color: var(--text-dim);
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-dim);
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+.search-container:focus-within .search-icon {
+  color: var(--primary);
+}
+
+.city-selector-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 0.95rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.city-selector-btn:hover {
+  background: rgba(248, 68, 100, 0.14);
+  border-color: rgba(248, 68, 100, 0.5);
+  color: #ffffff;
+  box-shadow: 0 0 14px rgba(248, 68, 100, 0.2);
+}
+
+/* Secondary Subnav */
+.imovies-subnav {
+  background: rgba(6, 9, 17, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.86rem;
+}
+
+.subnav-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-xs);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+.subnav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+.subnav-link.active {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+.subnav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 12px;
+  right: 12px;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+  box-shadow: 0 0 8px var(--primary);
+}
+
+/* ==========================================================================
+   Full-Bleed Widescreen Cinematic Hero Stage
+   ========================================================================== */
+.cinematic-hero-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #060913;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 992px) {
+  .cinematic-hero-wrapper {
+    min-height: 680px;
+  }
+}
+
+.hero-backdrop-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center 22%;
+  background-repeat: no-repeat;
+  transition: opacity 0.6s ease-in-out, transform 8s ease-out;
+  transform: scale(1.03);
+}
+
+/* Multi-Directional Cinematic Gradient Scrims */
+.hero-scrim-left {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(6, 9, 19, 0.98) 0%,
+    rgba(6, 9, 19, 0.92) 36%,
+    rgba(6, 9, 19, 0.72) 60%,
+    rgba(6, 9, 19, 0.2) 80%,
+    rgba(6, 9, 19, 0.6) 100%
+  );
+  z-index: 1;
+}
+
+.hero-scrim-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48%;
+  background: linear-gradient(
+    to top,
+    #060913 0%,
+    rgba(6, 9, 19, 0.96) 24%,
+    rgba(6, 9, 19, 0.65) 60%,
+    transparent 100%
+  );
+  z-index: 2;
+}
+
+.hero-scrim-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(to bottom, rgba(6, 9, 19, 0.75), transparent);
+  z-index: 2;
+}
+
+/* Hero Content Area */
+.hero-inner-container {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  padding-top: 3.5rem;
+  padding-bottom: 3rem;
+}
+
+.hero-title {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-shadow: 0 4px 28px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 0, 0, 0.6);
+}
+
+.hero-badge-live {
+  background: rgba(229, 9, 20, 0.2);
+  border: 1px solid rgba(229, 9, 20, 0.55);
+  color: #ff3b5c;
+  font-weight: 800;
+  font-size: 0.73rem;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: var(--radius-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+}
+
+.pulsing-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ff2a55;
+  box-shadow: 0 0 8px #ff2a55;
+  display: inline-block;
+  animation: pulse-red 1.8s infinite;
+}
+
+@keyframes pulse-red {
+  0% { transform: scale(0.9); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; box-shadow: 0 0 12px #ff2a55; }
+  100% { transform: scale(0.9); opacity: 0.8; }
+}
+
+/* Hero Interactive Thumbnail Rail */
+.hero-rail-item {
+  width: 130px;
+  height: 80px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.28s ease;
+  background: #090e1c;
+  flex-shrink: 0;
+}
+.hero-rail-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+  filter: brightness(0.85);
+}
+.hero-rail-item:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-3px);
+}
+.hero-rail-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(1);
+}
+.hero-rail-item.active {
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(248, 68, 100, 0.55);
+}
+.hero-rail-item.active img {
+  filter: brightness(1.05);
+}
+
+/* ==========================================================================
+   Filter Pills & Controls
+   ========================================================================== */
+.filter-rail-wrapper {
+  background: rgba(14, 21, 38, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  backdrop-filter: blur(12px);
+  padding: 0.9rem 1.25rem;
+}
+
+.filter-pill {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  border-radius: var(--radius-pill);
+  padding: 0.42rem 1.05rem;
+  font-size: 0.84rem;
+  font-weight: 500;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.filter-pill.active {
+  background: var(--primary-gradient);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 3px 14px var(--primary-glow);
+}
+
+/* ==========================================================================
+   Movie Cards (Dribbble Theatrical Poster Card)
+   ========================================================================== */
+.movie-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.015);
+  border-color: var(--border-highlight);
+  box-shadow: 0 20px 42px rgba(0, 0, 0, 0.75), 0 0 25px rgba(248, 68, 100, 0.32);
+}
+
+.poster-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 145%; /* ~2:3 cinema aspect ratio */
+  background: #0b1122;
+  overflow: hidden;
+}
+
+.poster-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.movie-card:hover .poster-img {
+  transform: scale(1.06);
+}
+
+/* Floating Glass Rating Bar on Poster */
+.poster-rating-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(6, 9, 19, 0.98) 0%, rgba(6, 9, 19, 0.7) 65%, transparent 100%);
+  padding: 1.4rem 0.85rem 0.65rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  z-index: 2;
+}
+
+.badge-tag {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f1f5f9;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.badge-cert {
+  background: rgba(248, 68, 100, 0.18);
+  border: 1px solid rgba(248, 68, 100, 0.45);
+  color: #ff3b5c;
+  font-weight: 800;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
+}
+
+.card-title-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.35;
+  height: 1.35em;
+  font-weight: 700;
+  color: #ffffff;
+}
+.card-title-clamp:hover {
+  color: var(--primary);
+}
+
+/* ==========================================================================
+   Cinema Theatre Cards & Showtime Buttons
+   ========================================================================== */
+.theatre-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.35rem;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.theatre-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.showtime-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #10b981;
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.95rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+  min-width: 105px;
+  cursor: pointer;
+}
+
+.showtime-btn:hover {
+  background: rgba(16, 185, 129, 0.16);
+  border-color: #10b981;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+}
+
+.showtime-btn.active {
+  background: #10b981;
+  color: #060913;
+  border-color: #10b981;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+}
+
+.showtime-btn.filling {
+  border-color: rgba(245, 158, 11, 0.45);
+  color: #f59e0b;
+}
+.showtime-btn.filling:hover {
+  background: rgba(245, 158, 11, 0.16);
+  border-color: #f59e0b;
+}
+
+.showtime-btn.almost_full {
+  border-color: rgba(239, 68, 68, 0.48);
+  color: #ef4444;
+}
+.showtime-btn.almost_full:hover {
+  background: rgba(239, 68, 68, 0.16);
+  border-color: #ef4444;
+}
+
+/* ==========================================================================
+   Seat Booking Experience (Curved Projection Screen)
+   ========================================================================== */
+.cinema-screen-container {
+  perspective: 500px;
+  margin: 1.5rem auto 2.5rem auto;
+  text-align: center;
+}
+
+.cinema-screen {
+  height: 28px;
+  width: 84%;
+  margin: 0 auto;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  background: linear-gradient(to bottom, #f84464 0%, rgba(248, 68, 100, 0.2) 65%, transparent 100%);
+  box-shadow: 0 10px 35px rgba(248, 68, 100, 0.45);
+  border-top: 2.5px solid #ff4d6f;
+}
+
+.cinema-screen-label {
+  font-size: 0.74rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 9px;
+  font-weight: 700;
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.seat-row-label {
+  width: 26px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.seat {
+  width: 29px;
+  height: 27px;
+  border-radius: 6px 6px 3px 3px;
+  background: #18233c;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.68rem;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.seat:hover:not(.sold):not(.selected) {
+  background: rgba(248, 68, 100, 0.28);
+  border-color: var(--primary);
+  color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.seat.selected {
+  background: var(--primary-gradient);
+  border-color: #ffffff;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 0 14px var(--primary-glow);
+  transform: scale(1.12);
+}
+
+.seat.sold {
+  background: #090e18;
+  border-color: rgba(255, 255, 255, 0.04);
+  color: #2b3952;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+/* ==========================================================================
+   Modals (Frosted Glass Dialog)
+   ========================================================================== */
+.modal-backdrop-custom {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 5, 10, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 1060;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.22s ease-out;
+  overscroll-behavior: contain;
+}
+
+.modal-dialog-custom {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(248, 68, 100, 0.15);
+  width: 100%;
+  max-width: 840px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: scaleUp 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Booking Flow Step Wizard */
+.booking-wizard-steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 0.85rem 1.4rem;
+  background: rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+}
+
+.booking-step-item {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.booking-step-item.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.booking-step-item.completed {
+  color: #10b981;
+}
+
+.booking-step-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.booking-step-item.active .booking-step-badge {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.booking-step-item.completed .booking-step-badge {
+  background: #10b981;
+  color: #060913;
+}
+
+/* ==========================================================================
+   Discreet Health / Diagnostics Indicator
+   ========================================================================== */
+.health-floating-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1030;
+  background: rgba(10, 15, 30, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(14px);
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-main);
+}
+.health-floating-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: #151f38;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.status-dot.online {
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+.status-dot.pending {
+  background-color: #f59e0b;
+  box-shadow: 0 0 8px #f59e0b;
+}
+.status-dot.offline {
+  background-color: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+}
+
+/* ==========================================================================
+   Cinema Events, Stream & Supporting Cards
+   ========================================================================== */
+.cinema-event-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+.cinema-event-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(248, 68, 100, 0.4);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+}
+
+.cast-avatar {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: #182238;
+  border: 2px solid rgba(248, 68, 100, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #ffffff;
+  margin: 0 auto 8px auto;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.demo-tag {
+  background: rgba(245, 158, 11, 0.14);
+  border: 1px dashed rgba(245, 158, 11, 0.55);
+  color: #fbbf24;
+  font-size: 0.75rem;
+  padding: 4px 11px;
+  border-radius: var(--radius-xs);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Mobile Nav Drawer */
+.mobile-nav-drawer {
+  background: rgba(8, 12, 24, 0.98);
+  border-bottom: 1px solid var(--border-subtle);
+  backdrop-filter: blur(24px);
+  padding: 1.1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.mobile-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.78rem 1rem;
+  color: var(--text-main);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 0.94rem;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+.mobile-nav-btn:hover, .mobile-nav-btn.active {
+  background: rgba(248, 68, 100, 0.14);
+  color: var(--primary);
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hide Scrollbar for Horizontal Scrollers */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ==========================================================================
+   Phase 3B: My Bookings & Cinema E-Ticket Styles
+   ========================================================================== */
+.booking-ticket-card {
+  position: relative;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.booking-ticket-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(248, 68, 100, 0.35) !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.7), 0 0 20px rgba(248, 68, 100, 0.12) !important;
+}
+
+/* Ticket Semicircle Cutouts */
+.ticket-notch-top,
+.ticket-notch-bottom {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background-color: var(--bg-base);
+  border-radius: 50%;
+  z-index: 3;
+}
+.ticket-notch-top {
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.ticket-notch-bottom {
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Skeleton Placeholder Shimmer Animation */
+.skeleton-placeholder {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite ease-in-out;
+}
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Print Ticket Media Query */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-modal-backdrop,
+  .printable-modal-backdrop * {
+    visibility: visible;
+  }
+  .printable-modal-backdrop {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .printable-ticket-dialog {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Demo Payment Simulator Card Styles */
+.active-demo-option {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+.demo-payment-card {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.demo-payment-card:hover {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Reviews & Ratings Section Styles
+   ========================================================================== */
+.review-star-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.75rem;
+  line-height: 1;
+  padding: 4px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.2);
+  transition: transform 0.15s ease, color 0.15s ease, text-shadow 0.15s ease;
+}
+
+.review-star-btn:hover,
+.review-star-btn.hovered,
+.review-star-btn.active {
+  color: #ffb800;
+  text-shadow: 0 0 12px rgba(255, 184, 0, 0.5);
+  transform: scale(1.15);
+}
+
+.review-star-btn:focus-visible {
+  outline: 2px solid #ffb800;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.review-card {
+  background: rgba(14, 21, 38, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.review-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.review-card.user-own-review {
+  background: rgba(248, 68, 100, 0.05);
+  border-color: rgba(248, 68, 100, 0.35);
+  box-shadow: 0 0 16px rgba(248, 68, 100, 0.1);
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #f8fafc;
+  flex-shrink: 0;
+}
+
+.review-avatar.user-avatar {
+  background: linear-gradient(135deg, #f84464 0%, #b21032 100%);
+  border-color: rgba(248, 68, 100, 0.5);
+}
+
+.rating-bar-track {
+  height: 7px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.rating-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffb800, #f84464);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.review-action-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.review-action-btn:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+.review-action-btn.delete-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+/* ==========================================================================
+   Movie Details Modal - Dedicated Scrolling & Visual Hierarchy
+   ========================================================================== */
+.movie-details-dialog {
+  max-width: 880px;
+  width: 100%;
+  max-height: min(90vh, 900px);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 50px rgba(248, 68, 100, 0.15);
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  scroll-behavior: smooth;
+  animation: scaleUp 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom scrollbar for single scroll container */
+.movie-details-dialog::-webkit-scrollbar {
+  width: 8px;
+}
+.movie-details-dialog::-webkit-scrollbar-track {
+  background: rgba(6, 9, 19, 0.6);
+  border-radius: 999px;
+}
+.movie-details-dialog::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+}
+.movie-details-dialog::-webkit-scrollbar-thumb:hover {
+  background: rgba(248, 68, 100, 0.5);
+}
+
+/* Sticky top header bar inside the movie details dialog */
+.movie-details-sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 1.25rem;
+  background: rgba(10, 15, 30, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  min-height: 52px;
+  transition: all 0.25s ease;
+}
+
+.movie-details-sticky-header.scrolled {
+  background: rgba(8, 12, 24, 0.98);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  border-bottom-color: rgba(248, 68, 100, 0.3);
+}
+
+/* Close button */
+.movie-details-close-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.movie-details-close-btn:hover {
+  background: rgba(248, 68, 100, 0.2);
+  border-color: rgba(248, 68, 100, 0.5);
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Hero Section */
+.movie-details-hero {
+  position: relative;
+  padding: 2rem 2.25rem;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.movie-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 15, 30, 0.97) 0%,
+    rgba(10, 15, 30, 0.92) 50%,
+    rgba(10, 15, 30, 0.8) 100%
+  );
+  z-index: 1;
+}
+
+.movie-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.movie-hero-poster {
+  width: 135px;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+  flex-shrink: 0;
+  background: #050812;
+}
+
+.movie-hero-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Main Body Container */
+.movie-details-body {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.movie-details-section {
+  position: relative;
+}
+
+/* Section Headings */
+.movie-section-heading {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  font-family: var(--font-heading);
+}
+
+.section-title-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.movie-section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(248, 68, 100, 0.4) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  border: none;
+  margin: 0;
+}
+
+/* Section 1: Synopsis */
+.movie-synopsis-text {
+  font-size: 0.98rem;
+  line-height: 1.72;
+  color: #e2e8f0;
+  margin-bottom: 0;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.critic-consensus-card {
+  padding: 1rem 1.25rem;
+  background: rgba(248, 68, 100, 0.08);
+  border: 1px solid rgba(248, 68, 100, 0.25);
+  border-left: 4px solid #f84464;
+  border-radius: 10px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Section 2: Metadata Grid */
+.movie-metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
+}
+
+.metadata-card {
+  background: rgba(14, 21, 38, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.metadata-card:hover {
+  background: rgba(20, 30, 52, 0.65);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.metadata-label {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metadata-value {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #f8fafc;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Section 3: Cast Grid */
+.movie-cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.85rem;
+}
+
+.movie-cast-card {
+  background: rgba(14, 21, 38, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 1.1rem 0.65rem 0.85rem;
+  text-align: center;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie-cast-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(248, 68, 100, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.cast-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 2px;
+}
+
+.cast-role {
+  font-size: 0.74rem;
+  color: #94a3b8;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Section 4: Reviews & Ratings */
+.reviews-count-badge {
+  background: rgba(248, 68, 100, 0.2);
+  color: #f84464;
+  border: 1px solid rgba(248, 68, 100, 0.35);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 3px 8px;
+}
+
+.review-text-content {
+  font-size: 0.93rem;
+  line-height: 1.65;
+  color: #e2e8f0;
+  white-space: pre-line;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  margin-bottom: 0;
+}
+
+/* Form animation */
+@keyframes formSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.review-form-container {
+  animation: formSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .movie-metadata-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .movie-details-hero {
+    padding: 1.5rem 1.25rem;
+  }
+  .movie-details-body {
+    padding: 1.5rem 1.25rem;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .movie-details-dialog {
+    max-height: calc(100vh - 1.5rem);
+    border-radius: var(--radius-lg);
+  }
+  .movie-details-sticky-header {
+    padding: 0.5rem 0.85rem;
+  }
+  .movie-hero-poster {
+    width: 95px;
+    height: 140px;
+  }
+  .movie-cast-grid {
+    grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+    gap: 0.65rem;
+  }
+  .movie-cast-card {
+    padding: 0.85rem 0.5rem 0.7rem;
+  }
+  .cast-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 0.95rem;
+  }
+}
+
+
+
+
